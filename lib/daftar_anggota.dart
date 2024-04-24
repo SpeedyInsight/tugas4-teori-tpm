@@ -165,15 +165,7 @@ class _DaftarAnggotaState extends State<DaftarAnggota> {
                                               HalamanProfilAbhy(),
                                         ),
                                       );
-                                    } else if (anggota.nama == 'Visen') {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              HalamanProfilVisen(),
-                                        ),
-                                      );
-                                    }
+                                    } 
                                   },
                                   child: const Text("Lihat Detail Profil"),
                                   style: ElevatedButton.styleFrom(

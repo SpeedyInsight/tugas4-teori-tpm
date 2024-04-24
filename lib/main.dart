@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Tugas TPM 4',
+      title: 'Tugas TPM Teori 4',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

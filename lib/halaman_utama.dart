@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tugas4/menu_favorite.dart';
+import 'package:tugas4/segitiga.dart';
 import 'package:tugas4/situs_rekomendasi.dart';
 import 'package:tugas4/stopwatch.dart';
 import 'bantuan_halaman_utama.dart';
 import 'daftar_anggota.dart';
 import 'login_page.dart';
+import 'ganjil_genap.dart';
 
 
 class HalamanUtama extends StatefulWidget {
@@ -26,7 +28,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Menu Utama"),
+          title: Text("Halaman Utama"),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -34,8 +36,8 @@ class _HalamanUtamaState extends State<HalamanUtama> {
           backgroundColor: colorScheme.surface,
           selectedItemColor: Colors.blue,
           unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
-          selectedLabelStyle: textTheme.caption,
-          unselectedLabelStyle: textTheme.caption,
+          // selectedLabelStyle: textTheme.caption,
+          // unselectedLabelStyle: textTheme.caption,
           onTap: (value) {
             if (value == 1) {
               Navigator.push(context,
@@ -44,7 +46,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
               AlertDialog alert = AlertDialog(
                 title: Text("Logout"),
                 content: Container(
-                  child: Text("Apakah Anda Yakin Ingin Logout?"),
+                  child: Text("Yakin Logout?"),
                 ),
                 actions: [
                   TextButton(
@@ -91,16 +93,18 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image.asset(
-                    'images/logo.png',
+                    'images/logo2.png',
                     width: 180,
                     height: 180,
                   ),
                   Text(
-                    'Selamat Datang di Aplikasi',
+                    'Hi! ',
                     style: TextStyle(fontSize: 25),
                   ),
                   buttonDatarAnggota(context),
                   buttonStopwatch(context),
+                  buttonGanjilGenap(context),
+                  luasKelilingSegitiga(context),
                   buttonSitusRekomendasi(context),
                   buttonMenuFavorite(context),
                 ]),
@@ -117,12 +121,12 @@ Widget buttonDatarAnggota(BuildContext context) {
     child: Center(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
+          Navigator.push(context,
               MaterialPageRoute(builder: (context) {
                 return DaftarAnggota();
               }));
         },
-        child: const Text('Get Start Daftar Anggota'),
+        child: const Text('Daftar Anggota'),
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(40),
         ),
@@ -137,12 +141,52 @@ Widget buttonStopwatch(BuildContext context) {
     child: Center(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
+          Navigator.push(context,
               MaterialPageRoute(builder: (context) {
                 return const StopwatchPage();
               }));
         },
-        child: const Text('Get Start Stopwatch'),
+        child: const Text('Stopwatch'),
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size.fromHeight(40),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget buttonGanjilGenap(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.only(bottom: 20, left: 60, right: 60, top: 0),
+    child: Center(
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) {
+                return GanjilGenapApp();
+              }));
+        },
+        child: const Text('Bilangan Prima'),
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size.fromHeight(40),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget luasKelilingSegitiga(BuildContext context) {
+  return Container(
+    padding: const EdgeInsets.only(bottom: 20, left: 60, right: 60, top: 0),
+    child: Center(
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) {
+                return segitigaApp();
+              }));
+        },
+        child: const Text('Luas dan Keliling Segitiga'),
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(40),
         ),
@@ -157,12 +201,12 @@ Widget buttonSitusRekomendasi(BuildContext context) {
     child: Center(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
+          Navigator.push(context,
               MaterialPageRoute(builder: (context) {
                 return  SitusRekomendasi();
               }));
         },
-        child: const Text('Get Start Situs Rekomendasi'),
+        child: const Text('Situs Rekomendasi'),
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(40),
         ),
@@ -177,12 +221,12 @@ Widget buttonMenuFavorite(BuildContext context) {
     child: Center(
       child: ElevatedButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
+          Navigator.push(context,
               MaterialPageRoute(builder: (context) {
                 return MenuFavorite();
               }));
         },
-        child: const Text('Get Start Menu Favorite'),
+        child: const Text('Menu Favorite'),
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(40),
         ),
