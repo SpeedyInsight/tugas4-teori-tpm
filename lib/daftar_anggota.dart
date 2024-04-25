@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:tugas4/halaman_utama.dart';
 import 'bantuan_daftar_anggota.dart';
 import 'detail_profil1.dart';
-import 'detail_profil2.dart';
 import 'login_page.dart';
 
 class DaftarAnggota extends StatefulWidget {
@@ -169,7 +168,7 @@ class _DaftarAnggotaState extends State<DaftarAnggota> {
                                   },
                                   child: const Text("Lihat Detail Profil"),
                                   style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.white, minimumSize: const Size.fromHeight(40),
+                                    foregroundColor: Colors.black , minimumSize: const Size.fromHeight(40),
                                     shape: const RoundedRectangleBorder(),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 20),

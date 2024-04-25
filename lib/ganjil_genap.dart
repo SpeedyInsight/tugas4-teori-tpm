@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas4/bantuan_prima.dart';
 import 'halaman_utama.dart';
 import 'login_page.dart';
 
@@ -10,9 +11,13 @@ class GanjilGenapApp extends StatefulWidget {
 class _GanjilGenapAppState extends State<GanjilGenapApp> {
   TextEditingController _numberController = TextEditingController();
   var hasil = '';
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+    
     return Scaffold(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       appBar: AppBar(
@@ -31,6 +36,67 @@ class _GanjilGenapAppState extends State<GanjilGenapApp> {
                 (route) => false,
               );
             },
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        backgroundColor: colorScheme.surface,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
+        selectedLabelStyle: textTheme.caption,
+        unselectedLabelStyle: textTheme.caption,
+        onTap: (value) {
+          if (value == 1) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BantuanPrima()));
+          } else if (value == 2) {
+            AlertDialog alert = AlertDialog(
+              title: Text("Logout"),
+              content: Container(
+                child: Text("Apakah Anda Yakin Ingin Logout?"),
+              ),
+              actions: [
+                TextButton(
+                  child: Text("Yes"),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
+                ),
+                TextButton(
+                  child: Text("No"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+            showDialog(context: context, builder: (context) => alert);
+          } else {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => HalamanUtama()));
+          }
+          // Respond to item press.
+          setState(() => _currentIndex = value);
+        },
+        items: [
+          BottomNavigationBarItem(
+            label: 'Halaman Utama',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Bantuan',
+            icon: Icon(Icons.help),
+          ),
+          BottomNavigationBarItem(
+            label: 'Logout',
+            icon: Icon(Icons.logout),
           ),
         ],
       ),

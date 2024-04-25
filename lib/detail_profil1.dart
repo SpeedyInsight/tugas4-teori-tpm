@@ -113,13 +113,13 @@ class _HalamanProfilAbhyState extends State<HalamanProfilAbhy> {
                     ListTile(
                       leading: Icon(Icons.school),
                       title: Text('Kelas'),
-                      subtitle: Text('Teknologi Dan Pemrograman Mobile IF-B'),
+                      subtitle: Text('Teknologi Dan Pemrograman Mobile IF-A'),
                     ),
                     Divider(),
                     ListTile(
                       leading: Icon(Icons.location_on),
                       title: Text('Tempat, Tanggal Lahir'),
-                      subtitle: Text('Bungkolo, 23 Desember 2001'),
+                      subtitle: Text('Bungkolo, 1 Desember 2000'),
                     ),
                     Divider(),
                     ListTile(
